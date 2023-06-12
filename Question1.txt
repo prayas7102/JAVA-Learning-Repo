@@ -1,0 +1,54 @@
+Big O, time and space complexity: 
+NOTE: create a text file and write the answer with explanation of a,b,d.
+1)
+a) What is Time complexity of the following code?
+int a = 0;
+for (i = 0; i < N; i++) {
+    for (j = N; j > i; j--) {
+   	 a = a + i + j;
+    }
+}   
+
+Ans: The time complexity of above code is O(n^2).
+Explanation: 
+1st the inner loop runs for n time for 1st iteration of outer for loop. 
+2nd  the inner loop runs for n-1 time for the 2nd iteration of outer for loop. 
+3rd  the inner loop runs for n-2 time for the 3rd iteration of outer for loop.
+And so on..
+n+n-1+n-2+...+1=n*(n+1)/2
+The resultant time complexity: O(n*(n+1)/2): O(n^2)
+
+b) What is the time complexity of following code?
+int i, j, k = 0;
+for (i = n / 2; i <= n; i++) {
+    for (j = 2; j <= n; j = j * 2) {
+   	 k = k + n / 2;
+    }
+}
+
+Ans: The time complexity of above code is O(logn).
+Explanation: 
+The outer loop runs for n/2+1 iterations.
+The inner loop runs for logn time for each iteration of the outer for loop. 
+And so on..
+The resultant time complexity: O((n/2+1)*logn): O(logn)
+
+d) What is the time and space complexity of following code?
+
+let a = 0;
+for (let i = 0; i < n; ++i) {
+   for (let j = n; j > i; --j) {
+       a = a + i + j;
+   }
+}
+
+Ans: The time complexity : O(n^2), The space complexity: O(1)
+Explanation: 
+Explanation: 
+1st the inner loop runs for n time for 1st iteration of outer for loop. 
+2nd  the inner loop runs for n-1 time for the 2nd iteration of outer for loop. 
+3rd  the inner loop runs for n-2 time for the 3rd iteration of outer for loop.
+And so on..
+n+n-1+n-2+...+1=n*(n+1)/2
+The resultant time complexity: O(n*(n+1)/2): O(n^2)
+The space complexity; the program uses only constant space independent of the input “n” so O(1)
