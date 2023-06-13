@@ -1,41 +1,29 @@
-// Find the closest number in the array. Given an array of sorted integers. 
-// Find the closest value to the given number. Arrays may contain duplicate values and negative numbers. 
-// # Input: 
-//              arr[] = [2, 42, 82, 122, 162, 202, 242, 282, 322, 362], 
-//  number = 80
-// # Output: 82
+public class ClosestNumber {
+    public static int findClosestNum(int[] arr, int number) {
+        int left = 0;
+        int right = arr.length - 1;
+        int closest = Integer.MAX_VALUE;
 
-public class Main {
-    static int BinarySearch(int[] array, int num) {
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (Math.abs(arr[mid] - number) < Math.abs(closest - number)) {
+                closest = arr[mid];
+            }
 
-        int l = 0, r = array.length - 1, mid = 0, n = array.length - 1;
-
-        while (l <= r) {
-            mid = (l + r) / 2;
-            if (array[mid] < num) {
-                l = mid + 1;
-            } else
-                r = mid - 1;
+            if (arr[mid] > number) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
         }
 
-        int[] nearestNumIndexArray = new int[3];
-        nearestNumIndexArray[0] = mid - 1;
-        nearestNumIndexArray[1] = mid;
-        nearestNumIndexArray[2] = mid + 1;
-        System.out.println(mid);
-        int nearestNumIndex = Integer.MAX_VALUE;
-
-        for (int index : nearestNumIndexArray) {
-            if (index >= 0 && index <= n && nearestNumIndex > Math.abs(Math.abs(array[index]) - Math.abs(num)))
-                nearestNumIndex = index;
-        }
-
-        return array[nearestNumIndex];
+        return closest;
     }
 
     public static void main(String[] args) {
-        int[] array = { -2, -5, 82, 122, 162, 202, 242, 282, 322, 362 };
-        int num = -3;
-        System.out.println(BinarySearch(array, num));
+        int[] arr = {-2, -5, 42, 82, 122, 162, 202, 242, 282, 322, 362};
+        int number = -3;
+        int closestNumber = findClosestNum(arr, number);
+        System.out.println(closestNumber);
     }
 }
