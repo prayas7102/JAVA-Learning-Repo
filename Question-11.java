@@ -1,3 +1,9 @@
+// Given an integer array, rearrange it such that it contains positive and 
+// negative numbers at alternate positions. If the array contains extra 
+// positive or negative numbers, put them at the end of the array. 
+// 			# Input: arr = {9, -3, 5, -2, -8, -6, 1, 3}
+// 			# output: {5, -2, 9, -6,1 -8, 3, -3}
+
 import java.util.*;
 
 public class AlternatePositions {
