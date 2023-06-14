@@ -4,7 +4,7 @@
 // // # input: 1->left 2, 1->right 3, 2->left4, 2->right5, 3->left 6, 3->right7
 // // # output:  1 2 3 4 5 6 7
 
-public class LevelOrderTraversalWithQueue {
+public class LevelOrderTraversalWithArrayQueue {
     public static void main(String[] args) {
         Tree root = new Tree(1);
         root.left = new Tree(2);
