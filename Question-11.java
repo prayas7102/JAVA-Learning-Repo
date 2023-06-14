@@ -1,64 +1,78 @@
+import java.util.*;
+
 public class AlternatePositions {
-    static void swap(int l, int r, int[] arr) {
-        int tmp = arr[l];
-        arr[l] = arr[r];
-        arr[r] = tmp;
+
+  public static void main(String[] args) {
+    int[] arr = { 9, -3, 5, -2, -8, 6, 1, 3 };
+    AlterArray(arr);
+    System.out.println(Arrays.toString(arr));
+  }
+
+  public static void AlterArray(int[] arr) {
+    int n = arr.length;
+    int positiveCount = 0;
+    int negativeCount = 0;
+
+    // counting total positive and negative element
+    for (int i = 0; i < n; i++) {
+      if (arr[i] > 0) {
+        positiveCount++;
+      } else {
+        negativeCount++;
+      }
     }
 
-    static void solve(int[] arr) {
-
-        int len = arr.length;
-        int left = 0, right = len - 1;
-
-        while (left != right) {
-            if (arr[left] < 0 && arr[right] >= 0) {
-                swap(left, right, arr);
-                left++;
-                right--;
-            }
-            if (arr[left] > 0 && arr[right] >= 0) {
-                swap(left, right, arr);
-                left++;
-            }
-            if (arr[left] < 0 && arr[right] <= 0) {
-                swap(left, right, arr);
-                right--;
-            }
-        }
-
-        if (left == 0)
-            return;
-
-        int[] positiveArray = new int[left];
-        int[] negativeArray = new int[len - left];
-
-        for (int i = left; i < len ; i++) {
-            negativeArray[i-left] = arr[i];
-        }
-        for (int i = 0; i < left; i++) {
-            positiveArray[i] = arr[i];
-        }
-        
-        int p = 0, n = 0;
-        for (int i = 0; i < len; i++) {
-            if (i % 2 == 0 && p < positiveArray.length) {
-                arr[i] = positiveArray[p];
-                p++;
-            }
-
-            if (i % 2 != 0 && n < negativeArray.length) {
-                arr[i] = negativeArray[n];
-                n++;
-            }
-        }
-
+    // storing negative and positive no.s separately
+    int[] positiveNumbersArray = new int[positiveCount];
+    int[] negativeNumbersArray = new int[negativeCount];
+    int l = 0, p = 0;
+    for (int i = 0; i < n; i++) {
+      if (arr[i] > 0) {
+        positiveNumbersArray[p] = arr[i];
+        p++;
+      } else {
+        negativeNumbersArray[l] = arr[i];
+        l++;
+      }
     }
 
-    public static void main(String[] args) {
-        int[] arr = { 9, 3, -5, -2, -8, -6, 1, 3 };
-        solve(arr);
-        for (int element : arr) {
-        System.out.print(element + " ");
-        }
+    int positiveIndex = 0;
+    int negativeIndex = 0;
+
+    // storing diff b/w positiveCount & negativeCount
+    int extraNumbers = Math.min(positiveCount, negativeCount);
+
+    ArrayList<Integer> list = new ArrayList<Integer>();
+
+    // storing negative and positive no.s alternately
+    while (positiveIndex < positiveCount && negativeIndex < negativeCount) {
+      list.add(positiveNumbersArray[positiveIndex]);
+      list.add(negativeNumbersArray[negativeIndex]);
+      positiveIndex++;
+      negativeIndex++;
     }
+
+    //  to accomodate extra no.s if negativeCount < positiveCount
+    if (extraNumbers == negativeCount) {
+      while (positiveIndex < positiveCount) {
+        list.add(positiveNumbersArray[positiveIndex]);
+        positiveIndex++;
+      }
+    }
+    
+    // to accomodate extra no.sif positiveCount < negativeCount
+    if (extraNumbers == positiveCount) {
+      while (negativeIndex < negativeCount) {
+        list.add(negativeNumbersArray[negativeIndex]);
+        negativeIndex++;
+      }
+    }
+
+    // copying the elements in list to arr
+    int i = 0;
+    for (int ele : list) {
+      arr[i] = ele;
+      i++;
+    }
+  }
 }
