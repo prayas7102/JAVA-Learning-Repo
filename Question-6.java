@@ -1,23 +1,61 @@
-import java.util.*;
-public class TwoSum
-{
-    public static void findTwoSum(int[] arr, int targetSum) {
-        HashSet<Integer> targetSet = new HashSet<>();
-        for (int i = 0; i < arr.length; i++) {
-            int target = targetSum - arr[i];
-            if (targetSet.contains(target)) {
-                System.out.println(arr[i] + ", " + target);
-                return;
-            }
-            targetSet.add(arr[i]);
-        }
-        System.out.println("No two elements sum ");
+// Reverse a string using stack. Implement your own stack. [-Stack]
+// # input: string = “reverse me”
+// # output: “em esrever”
+
+public class ReverseStringWithStack {
+
+  public static void main(String[] args) {
+    String stringToBeReversed = "reverse me";
+    System.out.println(reverseString(stringToBeReversed));
+  }
+
+  public static String reverseString(String stringToBeReversed) {
+    int length = stringToBeReversed.length();
+    Stack stackInstance = new Stack(length);
+
+    // Pushing operation in stack
+    for (int i = 0; i < length; i++) {
+      stackInstance.push(stringToBeReversed.charAt(i));
     }
 
-    public static void main(String[] args) {
-        int[] arr1 = {0, -1, 2, -3, 1};
-        int sum1 = -2;
-        System.out.print("Output: ");
-        findTwoSum(arr1, sum1);
+    // Poping from stack
+    String reversedString = "";
+    while (!stackInstance.isEmpty()) {
+      reversedString += stackInstance.pop();
     }
+
+    return reversedString.toString();
+  }
+}
+
+class Stack {
+
+  private char[] stackArray;
+  private int top, maxLen;
+
+  public Stack(int size) {
+    maxLen = size;
+    stackArray = new char[maxLen];
+    top = -1;
+  }
+
+  public void push(char c) {
+    if (top == maxLen - 1) {
+      System.out.println("Stack overflow!");
+      return;
+    }
+    stackArray[++top] = c;
+  }
+
+  public char pop() {
+    if (top == -1) {
+      System.out.println("Stack underflow!");
+      return '\0'; 
+    }
+    return stackArray[top--];
+  }
+
+  public boolean isEmpty() {
+    return (top == -1);
+  }
 }
