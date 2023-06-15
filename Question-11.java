@@ -1,17 +1,17 @@
-// Given an integer array, rearrange it such that it contains positive and 
-// negative numbers at alternate positions. If the array contains extra 
-// positive or negative numbers, put them at the end of the array. 
+// Given an integer array, rearrange it such that it contains positive and
+// negative numbers at alternate positions. If the array contains extra
+// positive or negative numbers, put them at the end of the array.
 // 			# Input: arr = {9, -3, 5, -2, -8, -6, 1, 3}
 // 			# output: {5, -2, 9, -6,1 -8, 3, -3}
-
-import java.util.*;
 
 public class AlternatePositions {
 
   public static void main(String[] args) {
-    int[] arr = { 9, -3, 5, -2, -8, 6, 1, 3 };
+    int[] arr = { 9, 3, 5, 2, -8, -6, 1, 3 };
     AlterArray(arr);
-    System.out.println(Arrays.toString(arr));
+    for (int ele : arr) {
+      System.out.print(ele+ " ");
+    }
   }
 
   public static void AlterArray(int[] arr) {
@@ -48,37 +48,25 @@ public class AlternatePositions {
     // storing diff b/w positiveCount & negativeCount
     int extraNumbers = Math.min(positiveCount, negativeCount);
 
-    ArrayList<Integer> list = new ArrayList<Integer>();
-
-    // storing negative and positive no.s alternately
+    // Storing negative and positive numbers alternately
+    int index = 0;
     while (positiveIndex < positiveCount && negativeIndex < negativeCount) {
-      list.add(positiveNumbersArray[positiveIndex]);
-      list.add(negativeNumbersArray[negativeIndex]);
-      positiveIndex++;
-      negativeIndex++;
+      arr[index++] = positiveNumbersArray[positiveIndex++];
+      arr[index++] = negativeNumbersArray[negativeIndex++];
     }
 
-    //  to accomodate extra no.s if negativeCount < positiveCount
+    // Accommodating extra numbers if negativeCount < positiveCount
     if (extraNumbers == negativeCount) {
       while (positiveIndex < positiveCount) {
-        list.add(positiveNumbersArray[positiveIndex]);
-        positiveIndex++;
-      }
-    }
-    
-    // to accomodate extra no.sif positiveCount < negativeCount
-    if (extraNumbers == positiveCount) {
-      while (negativeIndex < negativeCount) {
-        list.add(negativeNumbersArray[negativeIndex]);
-        negativeIndex++;
+        arr[index++] = positiveNumbersArray[positiveIndex++];
       }
     }
 
-    // copying the elements in list to arr
-    int i = 0;
-    for (int ele : list) {
-      arr[i] = ele;
-      i++;
+    // Accommodating extra numbers if positiveCount < negativeCount
+    if (extraNumbers == positiveCount) {
+      while (negativeIndex < negativeCount) {
+        arr[index++] = negativeNumbersArray[negativeIndex++];
+      }
     }
   }
 }
