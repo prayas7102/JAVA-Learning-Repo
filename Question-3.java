@@ -5,8 +5,6 @@
 // # input: 5->4->3->2->1
 // # Output: “NO” 
 
-import java.util.*;
-
 public class Main {
     static boolean CheckPalindrome(Node head) {
         Node comparator = head, itrlength = head;
