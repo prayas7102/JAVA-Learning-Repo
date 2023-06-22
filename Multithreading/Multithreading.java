@@ -3,7 +3,7 @@ package Multithreading;
 class Multithreading extends Thread implements Runnable {
 
   public void run() {
-    System.out.println("Running by runnable interface");
+    System.out.println("Running by runnable interface "+ Thread.currentThread().getPriority());
   }
 
   public static void main(String[] args) throws Exception {
@@ -18,18 +18,18 @@ class Multithreading extends Thread implements Runnable {
     Hi hi = new Hi();
     hello.start();
     try {Thread.sleep(100);} catch (InterruptedException e) {}
-    
+
     hi.start();
     System.out.println(hi.isAlive());
-    hi.join();    // until the hi thread dies and joins with the main thread, below threads wont be called.
+    hi.join(); // until the hi thread dies and joins with the main thread, below threads wont be called.
     System.out.println(hi.isAlive());
 
     Thread t3 = new Thread(() -> {
-      System.out.println("Running by arrow func");
+      System.out.println("Running by arrow func "+ Thread.currentThread().getPriority());
     });
     t3.start();
 
-    System.out.println("completed");
+    System.out.println("Thread completed "+ Thread.currentThread().getPriority());
 
   }
 }
@@ -38,7 +38,7 @@ class Hello extends Thread {
 
   public void run() {
     for (int i = 0; i < 2; i++) {
-      System.out.println("Hello");
+      System.out.println("Hello " + Thread.currentThread().getPriority());
       try {
         Thread.sleep(100);
       } catch (InterruptedException e) {
@@ -52,7 +52,7 @@ class Hi extends Thread {
 
   public void run() {
     for (int i = 0; i < 2; i++) {
-      System.out.println("Hi");
+      System.out.println("Hi " + Thread.currentThread().getPriority());
       try {
         Thread.sleep(100);
       } catch (InterruptedException e) {
