@@ -1,7 +1,7 @@
 package Multithreading;
 
 class Multithreading extends Thread implements Runnable {
-
+  // get priority of given thread
   public void run() {
     System.out.println("Running by runnable interface "+ Thread.currentThread().getPriority());
   }
@@ -35,7 +35,6 @@ class Multithreading extends Thread implements Runnable {
 }
 
 class Hello extends Thread {
-
   public void run() {
     for (int i = 0; i < 2; i++) {
       System.out.println("Hello " + Thread.currentThread().getPriority());
@@ -49,7 +48,6 @@ class Hello extends Thread {
 }
 
 class Hi extends Thread {
-
   public void run() {
     for (int i = 0; i < 2; i++) {
       System.out.println("Hi " + Thread.currentThread().getPriority());

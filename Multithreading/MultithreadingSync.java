@@ -36,7 +36,7 @@ class MultithreadingSync {
 class Counter {
 
   int count;
-
+  // implements a mutex which avoids concurrency of threads
   public synchronized void increment() {
     count++;
   }
