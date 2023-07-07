@@ -11,7 +11,7 @@
 		<servlet-name>demoproject</servlet-name>
 		<url-pattern>/add</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>demoprojec</servlet-name>
 		<servlet-class>demoproject.SquareServlet</servlet-class>
