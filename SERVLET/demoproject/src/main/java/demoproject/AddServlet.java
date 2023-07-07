@@ -1,13 +1,16 @@
 package demoproject;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @SuppressWarnings("serial")
 public class AddServlet extends HttpServlet {
@@ -21,16 +24,29 @@ public class AddServlet extends HttpServlet {
 //		PrintWriter out = res.getWriter();
 //		out.println("result is " + k);
 
-//      2. InterServlet communication (session saving)
-
-//		2.a. session saving by passing k value to other servlet
-//		req.setAttribute("k", k);
-
-//		2.b. calling SquareServlet from AddServlet
+//		Calling SquareServlet from AddServlet
 //		RequestDispatcher rd = req.getRequestDispatcher("/sq");
 //		rd.forward(req, res);
 
-//		2.c. passing k as parameter
-		res.sendRedirect("sq?k=" + k);
+//      2. InterServlet communication (session saving)
+
+//		2.a. session saving by passing k value to other servlet.
+//		By using set attribute
+//		req.setAttribute("k", k);
+//		res.sendRedirect("sq");
+
+//		2.b. passing k as parameter
+//		res.sendRedirect("sq?k=" + k);
+
+// 		2.c. Http Sessions
+//		HttpSession session = req.getSession();
+//		session.setAttribute("k", k);
+//		res.sendRedirect("sq");
+
+//		2.d. Http Cokiees
+		Cookie cookie = new Cookie("k", k + "");
+		res.addCookie(cookie);
+		res.sendRedirect("sq");
+
 	}
 }
