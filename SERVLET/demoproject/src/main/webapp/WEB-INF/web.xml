@@ -11,4 +11,13 @@
 		<servlet-name>demoproject</servlet-name>
 		<url-pattern>/add</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>demoprojec</servlet-name>
+		<servlet-class>demoproject.SquareServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>demoprojec</servlet-name>
+		<url-pattern>/sq</url-pattern>
+	</servlet-mapping>
 </web-app>
