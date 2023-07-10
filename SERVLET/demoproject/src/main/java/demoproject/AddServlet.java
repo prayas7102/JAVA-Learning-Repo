@@ -1,10 +1,10 @@
 package demoproject;
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
-
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
@@ -32,7 +32,7 @@ public class AddServlet extends HttpServlet {
 
 //		2.a. session saving by passing k value to other servlet.
 //		By using set attribute
-//		req.setAttribute("k", k);
+//		req.getSession().setAttribute("k", k);
 //		res.sendRedirect("sq");
 
 //		2.b. passing k as parameter
@@ -44,9 +44,33 @@ public class AddServlet extends HttpServlet {
 //		res.sendRedirect("sq");
 
 //		2.d. Http Cokiees
-		Cookie cookie = new Cookie("k", k + "");
-		res.addCookie(cookie);
-		res.sendRedirect("sq");
+//		Cookie cookie = new Cookie("k", k + "");
+//		res.addCookie(cookie);
+//		res.sendRedirect("sq");
 
+		// 3. ServletConfig
+//		PrintWriter out = res.getWriter();
+//		ServletConfig cg = getServletConfig();
+//		String str = cg.getInitParameter("addServletNameKey");
+//		out.println(str);
+		// to check if square servlet is able to fetch it's config value
+//		try {
+//			Thread.sleep(5000);
+//			res.sendRedirect("sq");
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+
+		// 4. ServletContext
+//		PrintWriter out1 = res.getWriter();
+//		ServletContext ctx = getServletContext();
+//		String str1 = ctx.getInitParameter("name");
+//		out1.print(str1);
+		
+//		5. session saving by passing k value to other servlet.
+//		To demonstrate servlet annotation in MultiplyServlet
+		req.getSession().setAttribute("i", i);
+		RequestDispatcher rd = req.getRequestDispatcher("/mul");
+		rd.forward(req, res);
 	}
 }
