@@ -21,8 +21,8 @@ public class AddServlet extends HttpServlet {
 
 //		1. similar to res.send in nodejs	
 //		System.out.print(k);
-//		PrintWriter out = res.getWriter();
-//		out.println("result is " + k);
+		// PrintWriter out = res.getWriter();
+		// out.println("result is " + k);
 
 //		Calling SquareServlet from AddServlet
 //		RequestDispatcher rd = req.getRequestDispatcher("/sq");
