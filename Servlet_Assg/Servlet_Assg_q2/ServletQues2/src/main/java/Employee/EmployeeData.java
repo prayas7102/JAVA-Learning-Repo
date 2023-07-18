@@ -17,11 +17,13 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/EmployeeData")
 public class EmployeeData extends HttpServlet {
 
+	String userName="root";
+	String userPassword="prayas7@P";
 	// check if db already exsists
 	public boolean checkDB() throws SQLException {
 		// Load the JDBC driver
 		// Establish a connection to the database
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "prayas7@P");
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", userName, userPassword);
 
 		// Connection connection = <your java.sql.Connection>
 		ResultSet resultSet = connection.getMetaData().getCatalogs();
@@ -51,7 +53,7 @@ public class EmployeeData extends HttpServlet {
 			// check if db exsists
 			if (!checkDB()) {
 				// creating a connection
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "prayas7@P");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/",  userName, userPassword);
 				Statement statement = con.createStatement();
 
 				// Create a db
@@ -70,7 +72,7 @@ public class EmployeeData extends HttpServlet {
 				statement.close();
 			}
 
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Employee", "root", "prayas7@P");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Employee",  userName, userPassword);
 			
 			// create a row
 			String createRow = "insert into EmployeeData (ID, Name, Department, Experience) values (?,?,?,?)";
@@ -90,9 +92,9 @@ public class EmployeeData extends HttpServlet {
 			response.getWriter().println("<h2> DataSaved Successfuly </h2>");
 			response.getWriter().println("</body></html>");
 
-			// Redirecting to bank website
-			response.setHeader("Location", "/ServletQues3/EmployeeList");
-			response.setHeader("Refresh", "5; URL=" + "/ServletQues3/EmployeeList");
+			// Redirecting to bank website after waiting for 3 sec
+			response.setHeader("Location", "/ServletQues2/EmployeeList");
+			response.setHeader("Refresh", "3; URL=" + "/ServletQues2/EmployeeList");
 
 		} catch (Exception e) {
 			System.out.println(e);

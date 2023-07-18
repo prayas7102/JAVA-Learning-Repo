@@ -44,8 +44,8 @@ public class AddServlet extends HttpServlet {
 //		res.sendRedirect("sq");
 
 //		2.d. Http Cokiees
-//		Cookie cookie = new Cookie("k", k + "");
-//		res.addCookie(cookie);
+		// Cookie cookie = new Cookie("k", k + "");
+		// res.addCookie(cookie);
 //		res.sendRedirect("sq");
 
 		// 3. ServletConfig

@@ -39,12 +39,12 @@ public class SquareServlet extends HttpServlet {
 
 //		2.d. Http Cokiees
 //		int k = 0;
-//		Cookie[] cookies = req.getCookies();
-//		for (Cookie c : cookies) {
-//			if (c.getName().equals("k")) {
-//				k = (c.getName().equals("k")) ? Integer.parseInt(c.getValue()) : 0;
-//			}
-//		}
+		// Cookie[] cookies = req.getCookies();
+		// for (Cookie c : cookies) {
+		// 	if (c.getName().equals("k")) {
+		// 		k = (c.getName().equals("k")) ? Integer.parseInt(c.getValue()) : 0;
+		// 	}
+		// }
 //		k *= k;
 //		PrintWriter out = res.getWriter();
 //		out.println("SquareServlet:  " + k);
