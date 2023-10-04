@@ -9,6 +9,7 @@ class Multithreading extends Thread implements Runnable {
   public static void main(String[] args) throws Exception {
 
     Multithreading t1 = new Multithreading();
+    // t2 for runnable
     Thread t2 = new Thread(t1);
     // this will call run() method
     t2.start();

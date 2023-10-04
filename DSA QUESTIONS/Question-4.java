@@ -46,7 +46,7 @@ public class Main {
         }
     }
 
-    static int FindNode(int val) {
+     int FindNode(int val) {
         int i = 1;
         Node NewHead = head;
         boolean found = false;
