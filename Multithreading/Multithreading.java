@@ -19,10 +19,11 @@ class Multithreading extends Thread implements Runnable {
     Hi hi = new Hi();
     hello.start();
     try {Thread.sleep(100);} catch (InterruptedException e) {}
-
+    hello.join(); // until the hello thread dies and joins with the main thread, any threads wont be executed.]
+    
     hi.start();
     System.out.println(hi.isAlive());
-    hi.join(); // until the hi thread dies and joins with the main thread, below threads wont be called.
+    hi.join(); // until the hi thread dies and joins with the main thread, any threads wont be executed.
     System.out.println(hi.isAlive());
 
     Thread t3 = new Thread(() -> {
